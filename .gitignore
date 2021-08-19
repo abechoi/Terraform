@@ -1,0 +1,4 @@
+.vscode
+.env
+aws-cli/MyKey.pem
+terraform-aws/.terraform
