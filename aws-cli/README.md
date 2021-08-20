@@ -13,7 +13,7 @@ AWS CLI
 
 Create ~/.aws/credentials and ~/.aws/configure.
 ```
-> aws configure
+aws configure
 
 # from the AWS console, go to user profile, My Security Credentials, Access Keys
 # then Create New Access Key, Show Access Key
