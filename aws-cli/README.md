@@ -6,6 +6,7 @@ AWS CLI
 1. [AWS Configure](#aws-configure)
 2. [Key Pairs](#key-pairs)
 3. [Instances](#instances)
+4. [S3 Buckets](#s3-buckets)
 
 
 ## AWS Configure
@@ -38,7 +39,8 @@ aws ec2 delete-key-pair --key-name MyKey
 3. Describe key pairs
 ```
 # describe all key pairs
-aws ec2 describe-key-pairs 
+aws ec2 describe-key-pairs
+
 # describe specific key pair
 aws ec2 describe-key-pairs  --key-name MyKey 
 ```
@@ -59,6 +61,7 @@ aws ec2 create-tags --resource i-0b2a534d557812995 --tags Key=Name, Value=prod-w
 ```
 # describe all instances
 aws ec2 describe-instances
+
 # describe specific instance
 aws ec2 describe-instances --instance-id i-0b2a534d557812995
 ```
@@ -66,4 +69,62 @@ aws ec2 describe-instances --instance-id i-0b2a534d557812995
 4. Delete instances
 ```
 aws ec2 terminate-instances --instance-ids i-0b2a534d557812995 i-0149aad80b05a0eea
+```
+
+## S3 Buckets
+
+1. List buckets
+```
+# list all buckets
+aws s3 ls
+
+# list contents of a bucket
+aws s3 ls s3://abechoi-bucket
+
+# list contents of a bucket folder
+aws s3 ls s3://abechoi-bucket/test-folder
+```
+
+2. Create a bucket
+```
+# bucket name must be globally unique
+aws s3 mb s3://abechoi-bucket
+```
+
+3. Copy files
+```
+# copy file to bucket
+aws s3 cp file.txt s3://abechoi-bucket
+
+# copy file to a new bucket folder
+aws s3 cp file.txt s3://abechoi-bucket/new-folder
+```
+
+4. Move files
+```
+# move file to bucket
+aws s3 mv file.txt s3://abechoi-bucket
+```
+
+5. Sync up local folders to bucket
+```
+# sync current directory to a bucket folder
+aws s3 sync . s3://abechoi-bucket/aws-cli/
+
+# reverse-sync bucket folder to current directory
+aws s3 sync s3://abechoi-bucket/aws-cli/ .
+
+# pass delete flag to delete bucket files
+aws s3 sync . s3://abechoi-bucket/aws-cli/ --delete
+```
+
+6. Delete a file
+```
+aws s3 rm s3://abechoi-bucket/MyKey.pem
+```
+
+6. Delete a bucket
+```
+# use --force if bucket is not empty
+aws s3 rb s3://abechoi-bucket
 ```

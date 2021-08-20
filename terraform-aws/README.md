@@ -10,7 +10,7 @@ Terraform AWS
 5. [Associate Subnet And Route Table](#associate-subnet-and-route-table)
 6. [Create Security Group](#create-security-group)
 7. [Create Network Interface](#create-network-interface)
-8. [Assign Elestic IP](#assign-elastic-ip)
+8. [Assign Elastic IP](#assign-elastic-ip)
 9. [Create Ubuntu Server](#create-ubuntu-server)
 
 
@@ -149,7 +149,7 @@ resource "aws_network_interface" "prod_nic" {
 }
 ```
 
-## Assign Elestic IP
+## Assign Elastic IP
 
 ```
 Associate elastic IP with the network interface
