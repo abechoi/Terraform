@@ -8,12 +8,8 @@ terraform {
 }
 
 provider "aws" {
-  # version = "~> 2.0" (not required)
   profile = "default"
   region  = "us-west-1"
-  # from the AWS console, go to user profile, My Security Credentials, Access Keys
-  # then Create New Access Key, Show Access Key
-  # shared_credentials_file = "/Users/abe/.aws/credentials"
 }
 
 variable "subnet_prefix" {
@@ -144,7 +140,7 @@ output "server_public_ip" {
   value = aws_eip.one.public_ip
 }
 
-# 9. Create Ubuntu Server
+# 9. Create Virtual Machine
 resource "aws_instance" "web-server-instance" {
   ami               = "ami-0d382e80be7ffdae5"
   instance_type     = "t2.micro"

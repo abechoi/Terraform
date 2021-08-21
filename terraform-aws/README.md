@@ -1,7 +1,17 @@
 <h1 align="center">
 Terraform AWS
 </h1>
+<h2 align="center">
+Create an Ubuntu Webserver
+</h2>
 <p align="center">By Sanjeev Thiyagarajan and FreeCodeCamp.org</p>
+<p align="center">Updated and modified by Abraham Choi</p>
+
+## Overview
+
+Follow the steps below to create an Ubuntu web server with a public ip address and a script to update the server, get Apache2, and run it as a service. I've added the terraform block and modified the provider block to reflect best practices. To run main.tf, execute command terrform fmt, terraform validate, then terraform apply if file is valid.
+
+## Table of Contents
 
 1. [Create VPC](#create-vpc)
 2. [Create Internet Gateway](#create-internet-gateway)
@@ -13,18 +23,8 @@ Terraform AWS
 8. [Assign Elastic IP](#assign-elastic-ip)
 9. [Create Ubuntu Server](#create-ubuntu-server)
 
-
-## Create Provider
-```
-# Do not hardcode access and secret key into this file!
-provider "aws" {
-  region = "us-west-1"
-  access_key = ""
-  secret_key = ""
-}
-```
-
 ## Create VPC
+
 Virtual Private Cloud (VPC) - A virtual network dedicated to your AWS account.
 
 ```
@@ -37,8 +37,8 @@ resource "aws_vpc" "main_vpc" {
 }
 ```
 
-
 ## Create Internet Gateway
+
 Internet Gateway - A gateway that you attach to your VPC to enable communication between resources in your VPC and the internet.
 
 ```
@@ -48,6 +48,7 @@ resource "aws_internet_gateway" "igw" {
 ```
 
 ## Create Route Table
+
 Route Table - A set of rules, called routes, that are used to determine where network traffic is directed.
 
 ```
@@ -67,6 +68,7 @@ resource "aws_route_table" "prod_route_table" {
 ```
 
 ## Create Subnet
+
 Subnet - A range of IP addresses in your VPC.
 
 ```
@@ -78,7 +80,6 @@ resource "aws_subnet" "subnet_1" {
   }
 }
 ```
-
 
 ## Associate Subnet And Route Table
 
@@ -138,6 +139,7 @@ resource "aws_security_group" "allow_web" {
 ```
 
 ## Create Network Interface
+
 Network Interface - A logical networking component in a VPC that represents a virtual network card.
 
 ```
@@ -161,7 +163,7 @@ resource "aws_eip" "one" {
 }
 ```
 
-## Create Ubuntu Server
+## Create Virtual Machine
 
 ```
 resource "aws_instance" "prod-instance" {
