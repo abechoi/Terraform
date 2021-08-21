@@ -1,9 +1,19 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.27"
+    }
+  }
+}
+
 provider "aws" {
   # version = "~> 2.0" (not required)
-  region = "us-west-1"
+  profile = "default"
+  region  = "us-west-1"
   # from the AWS console, go to user profile, My Security Credentials, Access Keys
   # then Create New Access Key, Show Access Key
-  shared_credentials_file = "/Users/abe/.aws/credentials"
+  # shared_credentials_file = "/Users/abe/.aws/credentials"
 }
 
 variable "subnet_prefix" {

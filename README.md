@@ -5,14 +5,18 @@ Terraform Projects
 
 1. [AWS CLI](#aws-cli)
 2. [Azure CLI](#azure-cli)
-3. [Terraform AWS](#terraform-aws)
-4. [Terraform Azure](#terraform-azure)
+3. [Packer](#packer)
+4. [Terraform AWS](#terraform-aws)
+5. [Terraform Azure](#terraform-azure)
 
 
 ## AWS CLI
 Tutorial by Sanjeev Thiyagarajan, that utilizes aws configure to create ~/.aws/configure and ~/.aws/credentials. This course covers create, delete, and describe functions for key pairs, instances, and S3 buckets.
 
 ## Azure CLI
+Tutorial by Sanjeev Thiyagarajan.
+
+## Packer
 Tutorial by Sanjeev Thiyagarajan.
 
 ## Terraform AWS
