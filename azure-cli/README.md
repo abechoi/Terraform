@@ -3,6 +3,12 @@ Azure CLI
 </h1>
 <p align="center">By Sanjeev Thiyagarajan</p>
 
+## Overview
+
+Before creating an Azure infrastructure using Terraform, familiarity with Azure CLI is highly recommended. This tutorial goes over fundamentals of Azure CLI.
+
+## Table of Contents
+
 1. [AZ Login](#az-login)
 2. [AZ Configure](#az-configure)
 3. [Resource Groups](#resource-groups)
@@ -12,6 +18,7 @@ Azure CLI
 ## AZ Login
 
 1. Login to Azure
+
 ```
 az login
 ```
@@ -19,6 +26,7 @@ az login
 ## AZ Configure
 
 1. Configure default settings
+
 ```
 # set RG-1 as default group
 az configure --default group=RG-1
@@ -27,24 +35,28 @@ az configure --default group=RG-1
 ## Resource Groups
 
 1. Create a resource group
+
 ```
 # list locations
 az account list-locations
 
 # create resource group
-az group create -l westus2 -n RG-2 
+az group create -l westus2 -n RG-2
 ```
 
 2. Delete a resource group
+
 ```
 az group delete -n RG-2
 ```
 
 ## List and Show
+
 1. List VMs
+
 ```
 # show details for a VM
-az vm show -g RG-2 -n az-vm 
+az vm show -g RG-2 -n az-vm
 
 # list all VMs
 az vm list
@@ -59,18 +71,21 @@ az group list
 ## Virtual Machines
 
 1. Create a VM
+
 ```
 # create a VM
 az vm create -n az-vm -g RG-2 --image UbuntuLTS --authentication-type password --admin-username abe123
 ```
 
 2. Modify a VM
+
 ```
 # add tags to a VM
 az vm update -g RG-2 -n az-vm --set tags.department=accounting tags.owner=abe
 ```
 
 3. Stop and Deallocate a VM
+
 ```
 # stop a VM
 az vm stop -g RG-2 -n az-vm
@@ -80,6 +95,7 @@ az vm deallocate -g RG-1 -n az-vm
 ```
 
 4. Start a VM
+
 ```
 # start by resource group and name
 az vm start -g RG-1 -n test-VM
@@ -89,6 +105,7 @@ az vm start --ids /subscriptions/e33f937c-8f7e-439f-8ffc-88a83dd4bf65/resourceGr
 ```
 
 5. Delete a VM
+
 ```
 az vm delete -g RG-1 -n test-VM
 ```
