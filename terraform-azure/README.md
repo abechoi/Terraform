@@ -6,6 +6,12 @@ Create an Ubuntu Webserver
 </h2>
 <p align="center">By Abraham Choi</p>
 
+## Overview
+
+Follow the steps below to create an Ubuntu web server with a public ip address. To run main.tf, execute command terrform fmt, terraform validate, then terraform apply if file is valid.
+
+## Table of Contents
+
 1. [Create Resource Group](#create-resource-group)
 2. [Create Virtual Network](#create-virtual-network)
 3. [Create Subnet](#create-subnet)

@@ -17,7 +17,7 @@ Tutorial by Sanjeev Thiyagarajan, that utilizes aws configure to create ~/.aws/c
 
 Tutorial by Sanjeev Thiyagarajan, that utilizes az login to authenticate the terraform file. This course covers create, delete, and list functions for resource groups and virtual machines.
 
-## Packer
+## [Packer](https://github.com/abechoi/Terraform/tree/main/packer)
 
 Tutorial by Sanjeev Thiyagarajan.
 
@@ -29,4 +29,4 @@ note: you may also have to change other fields, such as region, availability_zon
 
 ## Terraform Azure
 
-In the near future, by utilizing offical docs and any available resources, I want to mimic everything I've covered in Terraform AWS for Azure...
+Using official documentation, I was able to create a similar main.tf for Azure as I have with AWS. There were a few minor differences, but it was more of the same. I still have yet to figure out how to input a user_data script for azurerm_linux_virtual_machines, like I can with aws_instance.
