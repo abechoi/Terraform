@@ -1,0 +1,13 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "profile": "default",
+      "region": "us-west-1",
+      "ami_name": "my-first-ami",
+      "source_ami": "ami-04b6c97b14c54de18",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user"
+    }
+  ]
+}

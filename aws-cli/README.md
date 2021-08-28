@@ -51,7 +51,7 @@ aws ec2 delete-key-pair --key-name MyKey
 aws ec2 describe-key-pairs
 
 # describe specific key pair
-aws ec2 describe-key-pairs  --key-name MyKey
+aws ec2 describe-key-pairs --key-name MyKey
 ```
 
 ## Instances

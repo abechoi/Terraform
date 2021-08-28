@@ -23,10 +23,8 @@ Tutorial by Sanjeev Thiyagarajan.
 
 ## [Terraform AWS](https://github.com/abechoi/Terraform/tree/main/terraform-aws)
 
-Tutorial by Sanjeev Thiyagarajan, that covers a wide array of Terraform topics, from getting started and authenticating, to creating and destorying resources. To run main.tf, you will need to change the shared_credentials_file field in the provider block with an aws credentials file of your own. If not, you'll have to create one using AWS CLI, aws configure command. Else, you may replace the shared_credentials_file with access_key and secret_key, which can be found in your AWS console.
-
-note: you may also have to change other fields, such as region, availability_zone, ami, and key_name.
+Tutorial by Sanjeev Thiyagarajan, that covers a wide array of Terraform topics, from getting started and authenticating, to creating and destorying resources. You may have to change fields, such as region, availability_zone, ami, and key_name.
 
 ## [Terraform Azure](https://github.com/abechoi/Terraform/tree/main/terraform-azure)
 
-Using official documentation, I was able to create a similar main.tf for Azure as I have with AWS. There were a few minor differences, but it was more of the same. I still have yet to figure out how to input a user_data script for azurerm_linux_virtual_machines, like I can with aws_instance.
+Using official documentation, I was able to create a similar main.tf for Azure, as I have with AWS. There were a few minor differences, but it was more of the same. I still have yet to figure out how to input a user_data script for azurerm_linux_virtual_machines, like I can with aws_instance.
