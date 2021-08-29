@@ -65,10 +65,14 @@ note: Be sure to deregister the AMI to delete it.
     {
       "type": "shell",
       "inline": [
-        # sleep for 30 seconds to boot up fully before next line
         "sleep 30",
         "sudo apt update",
-        "sudo apt install nginx -y"
+        "sudo apt install nginx -y",
+        "systemctl enable nginx",
+        "sudo ufw allow ssh",
+        "sudo ufw allow http",
+        "sudo ufw allow https",
+        "sudo ufw enable"
       ]
     }
   ]
@@ -81,6 +85,33 @@ systemctl status nginx
 ```
 
 ## Script Provisioner
+
+Alternatively, instead of inserting all commands into inline, using script is available.
+
+script.sh
+
+```
+sleep 30
+sudo apt update
+sudo apt install nginx -y
+systemctl enable nginx
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable
+```
+
+example.jsom
+
+```
+"provisioners": [
+    {
+      "type": "shell",
+      "script": "script.sh",
+
+    }
+  ]
+```
 
 ## File Provisioner
 

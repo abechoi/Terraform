@@ -13,11 +13,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "sleep 30",
-        "sudo apt update",
-        "sudo apt install nginx -y"
-      ]
+      "script": "script.sh"
     }
   ]
 }
