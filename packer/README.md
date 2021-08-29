@@ -42,11 +42,11 @@ example.json
     {
       "type": "amazon-ebs",
       "profile": "default",
-      "region": "us-west-2",
-      "ami_name": "my-first-ami",
+      "region": "us-west-1",
+      "ami_name": "ubuntu-nginx",
       "source_ami": "ami-0d382e80be7ffdae5",
       "instance_type": "t2.micro",
-      "ssh_username": "ec2-user"
+      "ssh_username": "ubuntu"
     }
   ]
 }
@@ -59,6 +59,26 @@ packer build example.json
 note: Be sure to deregister the AMI to delete it.
 
 ## Configure Provisioners
+
+```
+"provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        # sleep for 30 seconds to boot up fully before next line
+        "sleep 30",
+        "sudo apt update",
+        "sudo apt install nginx -y"
+      ]
+    }
+  ]
+```
+
+To confirm nginx is installed, ssh into the instance
+
+```
+systemctl status nginx
+```
 
 ## Script Provisioner
 

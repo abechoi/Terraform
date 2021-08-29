@@ -4,10 +4,20 @@
       "type": "amazon-ebs",
       "profile": "default",
       "region": "us-west-1",
-      "ami_name": "my-first-ami",
-      "source_ami": "ami-04b6c97b14c54de18",
+      "ami_name": "ubuntu-nginx",
+      "source_ami": "ami-0d382e80be7ffdae5",
       "instance_type": "t2.micro",
-      "ssh_username": "ec2-user"
+      "ssh_username": "ubuntu"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        "sudo apt update",
+        "sudo apt install nginx -y"
+      ]
     }
   ]
 }
