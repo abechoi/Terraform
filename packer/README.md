@@ -115,6 +115,23 @@ example.jsom
 
 ## File Provisioner
 
+Create an index.html, reference it in the file provisioner and put it in /tmp.
+
+```
+"provisioners": [
+  {
+    "type": "file",
+    "source": "index.html",
+    "destination": "/tmp/"
+  },
+  {
+    "type": "shell",
+    # shell provisioner may use sudo, now it's possible to move index.html into /var/www/html
+    "inline": ["sudo cp /tmp/index.html /var/www/html/"]
+  }
+]
+```
+
 ## Multiple Provisioners
 
 ## Post Processors
