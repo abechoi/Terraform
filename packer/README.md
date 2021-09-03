@@ -11,7 +11,7 @@ Packer</h1>
 3. [Configure Provisioners](#configure-provisioners)
 4. [Script Provisioner](#script-provisioner)
 5. [File Provisioner](#file-provisioner)
-6. [Multiple Provisioners](#multiple-provisioners)
+6. [Build Azure Image](#build-azure-image)
 7. [Post Processors](#post-processors)
 8. [User-Variables](#user-variables)
 9. [Environment-Variables](#environment-variables)
@@ -132,7 +132,72 @@ Create an index.html, reference it in the file provisioner and put it in /tmp.
 ]
 ```
 
-## Multiple Provisioners
+## Build Azure Image
+
+### SETUP
+
+1. Get the client_id
+
+   Go to Active Directory > App registrations > New registration - Name the app and get the Application (client) ID.
+
+2. Get the client_secret
+
+   Go to Certificates & secrets > New client secret - Give a description and get the value.
+
+3. Get the subscription_id
+
+   Go to Subscriptions - Choose a subscription, Access control, Add role assignment, and create an owner role assigned to packer-test.
+
+4. Create a Resource Group
+
+```
+# to list publishers for westus
+az vm image list-publishers --location westus
+
+# to list offers for westus
+az vm image list-offers --location westus --publisher Canonical
+
+# to list SKUs for westus
+az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer
+```
+
+example.json
+
+```
+"builders": [
+    {
+      "type": "amazon-ebs",
+      "profile": "default",
+      "region": "us-west-1",
+      "ami_name": "ubuntu-nginx",
+      "source_ami": "ami-0d382e80be7ffdae5",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu"
+    },
+    {
+      "type": "azure-arm",
+      "client_id": "XXXX",
+      "client_secret": "XXXX",
+      "tenant_id": "XXXX",
+      "subscription_id": "XXXX",
+
+      "image_publisher": "Canonical",
+      "image_offer": "UbuntuServer",
+      "image_sku": "18.04-LTS",
+
+      "location": "West US",
+      "os_type": "Linux",
+      "managed_image_name": "ubuntu-nginx",
+      "managed_image_resource_group_name": "RG-1"
+    }
+  ]
+```
+
+To only run azure-arm builder...
+
+```
+packer build -only=azure-arm
+```
 
 ## Post Processors
 

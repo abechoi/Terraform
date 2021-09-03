@@ -8,6 +8,22 @@
       "source_ami": "ami-0d382e80be7ffdae5",
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu"
+    },
+    {
+      "type": "azure-arm",
+      "client_id": "XXXX",
+      "client_secret": "XXXX",
+      "tenant_id": "XXXX",
+      "subscription_id": "XXXX",
+
+      "image_publisher": "Canonical",
+      "image_offer": "UbuntuServer",
+      "image_sku": "18.04-LTS",
+
+      "location": "West US",
+      "os_type": "Linux",
+      "managed_image_name": "ubuntu-nginx",
+      "managed_image_resource_group_name": "RG-1"
     }
   ],
   "provisioners": [
