@@ -4,7 +4,7 @@
       "type": "amazon-ebs",
       "profile": "default",
       "region": "us-west-1",
-      "ami_name": "ubuntu-nginx",
+      "ami_name": "{{user `description`}}--{{user `version`}}",
       "source_ami": "ami-0d382e80be7ffdae5",
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu"
@@ -44,7 +44,7 @@
   "post-processors": [
     {
       "type": "manifest",
-      "output": "output.json"
+      "output": "{{user `description`}}.json"
     },
     {
       "type": "vagrant"

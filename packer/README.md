@@ -134,8 +134,6 @@ Create an index.html, reference it in the file provisioner and put it in /tmp.
 
 ## Build Azure Image
 
-### SETUP
-
 1. Get the client_id
 
    Go to Active Directory > App registrations > New registration - Name the app and get the Application (client) ID.
@@ -199,6 +197,23 @@ To only run azure-arm builder...
 packer build -only=azure-arm
 ```
 
+To create a file for variables...
+
+variables.json
+
+```
+{
+  "description": "ubuntu-nginx",
+  "version": ""
+}
+```
+
+Then run...
+
+```
+packer build -var-file=variables.json example.json
+```
+
 ## Post Processors
 
 Post Processors can perform certain tasks after a build is complete.
@@ -218,5 +233,41 @@ Post Processors can perform certain tasks after a build is complete.
 ```
 
 ## User-Variables
+
+To create variables, declare variables within its own block, and call it using "{{user `VARIABLE_NAME`}}.
+
+```
+"variables": {
+  "description": "ubuntu-nginx",
+  "version": ""
+},
+"builders": [
+  {
+    "type": "amazon-ebs",
+    "profile": "default",
+    "region": "us-west-1",
+    "ami_name": "{{user `description`}}--{{user `version`}}",
+    "source_ami": "ami-0d382e80be7ffdae5",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu"
+  }
+],
+"post-processors": [
+  {
+    "type": "manifest",
+    "output": "{{user `description`}}.json"
+  }
+]
+```
+
+To declare variables from the command line...
+
+```
+# use single quotes for Mac/Linux, use double quotes for Windows
+packer build -var 'description=ubuntu-nginx' example.json
+
+# for 2 variables...
+packer build -var 'description=ubuntu-nginx' -var 'version=2.4' example.json
+```
 
 ## Environment-Variables
