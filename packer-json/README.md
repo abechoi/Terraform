@@ -1,8 +1,12 @@
 <h1 align="center">
 Packer</h1>
+<h2 align="center">
+Using JSON</h2>
 <p align="center">By Sanjeev Thiyagarajan</p>
 
 ## Overview
+
+This tutorial covers the fundamentals of Packer using JSON. To run it, use command: packer build example.json, make sure to replace AWS and Azure credentials and pick a region of your choosing. To run only one build, use the -only flag. ie. packer build -only=azure-arm example.json.
 
 ## Table of Contents
 

@@ -5,9 +5,10 @@ Terraform Projects
 
 1. [AWS CLI](#aws-cli)
 2. [Azure CLI](#azure-cli)
-3. [Packer](#packer)
-4. [Terraform AWS](#terraform-aws)
-5. [Terraform Azure](#terraform-azure)
+3. [Packer JSON](#packer-json)
+4. [Packer HCL](#packer-hcl)
+5. [Terraform AWS](#terraform-aws)
+6. [Terraform Azure](#terraform-azure)
 
 ## [AWS CLI](https://github.com/abechoi/Terraform/tree/main/aws-cli)
 
@@ -17,13 +18,17 @@ Tutorial by Sanjeev Thiyagarajan, that utilizes aws configure to create ~/.aws/c
 
 Tutorial by Sanjeev Thiyagarajan, that utilizes az login to authenticate the terraform file. This course covers create, delete, and list functions for resource groups and virtual machines.
 
-## [Packer](https://github.com/abechoi/Terraform/tree/main/packer)
+## [Packer JSON](https://github.com/abechoi/Terraform/tree/main/packer-json)
 
-Tutorial by Sanjeev Thiyagarajan.
+Tutorial by Sanjeev Thiyagarajan, that covers the fundamentals of Packer using JSON, from authenticating, to creating custom images for AWS and Azure. To run example.json, you may have to change fields, such as profile, region, and other fields related to credentials.
+
+## [Packer HCL](https://github.com/abechoi/Terraform/tree/main/packer-hcl)
+
+Using offical documentation, combined with what I've learned in the Packer JSON tutorial, I would like to create a similar packer file using HCL instead of JSON.
 
 ## [Terraform AWS](https://github.com/abechoi/Terraform/tree/main/terraform-aws)
 
-Tutorial by Sanjeev Thiyagarajan, that covers a wide array of Terraform topics, from getting started and authenticating, to creating and destorying resources. You may have to change fields, such as region, availability_zone, ami, and key_name.
+Tutorial by Sanjeev Thiyagarajan, that covers a wide array of Terraform topics, from getting started and authenticating, to creating and destorying resources. To run main.tf, you may have to change some fields, such as region, availability_zone, ami, and key_name.
 
 ## [Terraform Azure](https://github.com/abechoi/Terraform/tree/main/terraform-azure)
 
