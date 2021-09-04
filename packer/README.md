@@ -271,3 +271,31 @@ packer build -var 'description=ubuntu-nginx' -var 'version=2.4' example.json
 ```
 
 ## Environment-Variables
+
+```
+"variables": {
+  "access_key": "{{env `ACCESS_KEY`}}",
+  "secret_key": "{{env `SECRET_KEY`}}"
+},
+"builders": [
+  {
+    "type": "amazon-ebs",
+    "access_key": "{{user `access_key`}}",
+    "secret_key": "{{user `secret_key`}}",
+    "region": "us-west-1",
+    "ami_name": "{{user `description`}}--{{user `version`}}",
+    "source_ami": "ami-0d382e80be7ffdae5",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu"
+  }
+]
+```
+
+To avoid private variables to show on Packer logs, use sensitive-variables
+
+```
+"sensitive-variables": [
+  "access_key",
+  "secret_key"
+]
+```
