@@ -201,6 +201,22 @@ packer build -only=azure-arm
 
 ## Post Processors
 
+Post Processors can perform certain tasks after a build is complete.
+
+```
+"post-processors": [
+  {
+    # outputs a manifest into a json format
+    "type": "manifest",
+    "output": "output.json"
+  },
+  {
+    # create a vagrant box
+    "type": "vagrant"
+  }
+]
+```
+
 ## User-Variables
 
 ## Environment-Variables
