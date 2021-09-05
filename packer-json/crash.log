@@ -1,0 +1,29 @@
+2021/09/04 18:50:06 [INFO] Packer version: 1.7.4 [go1.16.6 darwin amd64]
+2021/09/04 18:50:06 [TRACE] discovering plugins in /usr/local/Cellar/packer/1.7.4/libexec/bin
+2021/09/04 18:50:06 [TRACE] discovering plugins in /Users/abe/.packer.d/plugins
+2021/09/04 18:50:06 [TRACE] discovering plugins in .
+2021/09/04 18:50:06 [TRACE] discovering plugins in 
+2021/09/04 18:50:06 [TRACE] discovering plugins in /usr/local/bin
+2021/09/04 18:50:06 [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2021/09/04 18:50:06 [INFO] PACKER_CONFIG env var set; attempting to open config file: /Users/abe/.packerconfig
+2021/09/04 18:50:06 [WARN] Config file doesn't exist: /Users/abe/.packerconfig
+2021/09/04 18:50:06 [INFO] Setting cache directory: /Users/abe/Tutorials/DevOps/Terraform/Terraform_Course/packer-json/packer_cache
+2021/09/04 18:50:06 ui error: Failed to parse file as legacy JSON template: if you are using an HCL template, check your file extensions; they should be either *.pkr.hcl or *.pkr.json; see the docs for more details: https://www.packer.io/docs/templates/hcl_templates. 
+Original error: open variables.json: no such file or directory
+2021/09/04 18:50:06 ui error: Failed to get config from JSON
+2021/09/04 18:50:06 waiting for all plugin processes to complete...
+panic: interface conversion: packer.Handler is nil, not *command.CoreWrapper
+
+goroutine 1 [running]:
+github.com/hashicorp/packer/command.(*HCL2UpgradeCommand).RunContext(0xc000a1ff80, 0x993d140, 0xc000b1a100, 0xc0001ce580, 0x0)
+	github.com/hashicorp/packer/command/hcl2_upgrade.go:159 +0x1255
+github.com/hashicorp/packer/command.(*HCL2UpgradeCommand).Run(0xc000a1ff80, 0xc0000701d0, 0x1, 0x1, 0x0)
+	github.com/hashicorp/packer/command/hcl2_upgrade.go:41 +0xff
+github.com/mitchellh/cli.(*CLI).Run(0xc0003a1400, 0xc0003a1400, 0x1, 0x1)
+	github.com/mitchellh/cli@v1.1.0/cli.go:260 +0x41a
+main.wrappedMain(0x0)
+	github.com/hashicorp/packer/main.go:262 +0x872
+main.realMain(0x0)
+	github.com/hashicorp/packer/main.go:49 +0x105
+main.main()
+	github.com/hashicorp/packer/main.go:35 +0x25

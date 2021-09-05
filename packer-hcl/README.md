@@ -6,7 +6,7 @@ Using HCL</h2>
 
 ## Overview
 
-This tutorial covers the fundamentals of Packer using HCL. To run it, use command: packer build example.hcl, make sure to replace AWS and Azure credentials and pick a region of your choosing. To run only one build, use the -only flag. ie. packer build -only=azure-arm example.hcl.
+This tutorial covers the fundamentals of Packer using HCL. To run it, use command: packer build example.pkr.hcl, make sure to replace AWS and Azure credentials and pick a region of your choosing. To run only one build, use the -only flag. ie. packer build -only=azure-arm example.pkr.hcl.
 
 ## Table of Contents
 
@@ -38,26 +38,21 @@ Default output format [None]: json
 
 ## Build AMI
 
-example.json
+example.pkr.hcl
 
 ```
-{
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "profile": "default",
-      "region": "us-west-1",
-      "ami_name": "ubuntu-nginx",
-      "source_ami": "ami-0d382e80be7ffdae5",
-      "instance_type": "t2.micro",
-      "ssh_username": "ubuntu"
-    }
-  ]
+source "amazon-ebs" "aws_src" {
+  ami_name      = "ubuntu-nginx 1.0"
+  instance_type = "t2.micro"
+  profile       = "default"
+  region        = "us-west-2"
+  source_ami    = "ami-0d382e80be7ffdae5"
+  ssh_username  = "ubuntu"
 }
 ```
 
 ```
-packer build example.json
+packer build example.pkr.hcl
 ```
 
 note: Be sure to deregister the AMI to delete it.
@@ -65,21 +60,18 @@ note: Be sure to deregister the AMI to delete it.
 ## Configure Provisioners
 
 ```
-"provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-        "sleep 30",
-        "sudo apt update",
-        "sudo apt install nginx -y",
-        "systemctl enable nginx",
-        "sudo ufw allow ssh",
-        "sudo ufw allow http",
-        "sudo ufw allow https",
-        "sudo ufw enable"
-      ]
-    }
+provisioner "shell" {
+  "inline": [
+    "sleep 30",
+    "sudo apt update",
+    "sudo apt install nginx -y",
+    "systemctl enable nginx",
+    "sudo ufw allow ssh",
+    "sudo ufw allow http",
+    "sudo ufw allow https",
+    "sudo ufw enable"
   ]
+}
 ```
 
 To confirm nginx is installed, ssh into the instance
@@ -105,7 +97,7 @@ sudo ufw allow https
 sudo ufw enable
 ```
 
-example.jsom
+example.pkr.hcl
 
 ```
 "provisioners": [
@@ -163,7 +155,7 @@ az vm image list-offers --location westus --publisher Canonical
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer
 ```
 
-example.json
+example.pkr.hcl
 
 ```
 "builders": [

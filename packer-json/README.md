@@ -105,7 +105,7 @@ sudo ufw allow https
 sudo ufw enable
 ```
 
-example.jsom
+example.json
 
 ```
 "provisioners": [
